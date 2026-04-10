@@ -3,8 +3,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LinearRegression
 
 import warnings
+warnings.filterwarnings('ignore')
 
 def  num_fmt(x, pos=None):
     sign = '-' if x < 0 else ''
@@ -16,12 +18,17 @@ def  num_fmt(x, pos=None):
     return f'{sign}{x:,.0f}'
 
 def vis_corr(df, y:str, hue=None):
-    warnings.filterwarnings('ignore')
     
     object_col = df.select_dtypes(include=['object','str']).columns
     for i in object_col:
         le = LabelEncoder()
         df[i] = le.fit_transform(df[i])
+    
+    x = df.drop(y,axis=1)
+    y_true = df[y]
+    model = LinearRegression()
+    model.fit(x,y_true)
+    print(f'Coefficient of Determination (R²): {r2_score:.4f}')
     
     corr = df.corr()
     corr = corr[[y]].sort_values(by=y, ascending=False)
