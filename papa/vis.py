@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import warnings
 
-warnings.filterwarnings('ignore')
+
 
 def  num_fmt(x, pos=None):
     sign = "-" if x < 0 else ""
@@ -16,7 +16,7 @@ def  num_fmt(x, pos=None):
     return f"{sign}{x:,.0f}"
 
 def vis_corr(df, y:str, hue=None):
-    
+    warnings.filterwarnings('ignore')
     corr = df.select_dtypes(exclude=['object']).corr()
     corr = corr[[y]].sort_values(by=y, ascending=False)
     sns.heatmap(corr, cmap='Blues', annot=True, fmt='.2f')
