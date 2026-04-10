@@ -17,8 +17,9 @@ def  num_fmt(x, pos=None):
         return f'{sign}{x / 1_000:.0f}K'
     return f'{sign}{x:,.0f}'
 
-def vis_corr(df, y:str, hue=None):
-    
+def vis_corr(data, y:str, hue=None):
+
+    df = data.copy()
     object_col = df.select_dtypes(include=['object']).columns
     for i in object_col:
         le = LabelEncoder()
