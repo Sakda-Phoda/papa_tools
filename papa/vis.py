@@ -33,6 +33,7 @@ def vis_corr(df, y:str, hue=None):
         sns.scatterplot(data=df, x=col, y=y, ax=ax[i], hue=hue, palette='Set2')
         ax[i].set_title(f'{col} vs {y}')
         ax[i].yaxis.set_major_formatter(mtick.FuncFormatter(num_fmt))
+        ax[i].xaxis.set_major_formatter(mtick.FuncFormatter(num_fmt))
         
     for j in range(i + 1, len(ax)):
         fig.delaxes(ax[j])
