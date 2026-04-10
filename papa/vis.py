@@ -15,7 +15,7 @@ def  num_fmt(x, pos=None):
         return f'{sign}{x / 1_000:.0f}K'
     return f'{sign}{x:,.0f}'
 
-def vis_corr_dep(df, y:str, hue=None):
+def vis_corr(df, y:str, hue=None):
     warnings.filterwarnings('ignore')
     
     object_col = df.select_dtypes(include=['object','str']).columns
