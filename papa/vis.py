@@ -28,6 +28,7 @@ def vis_corr(df, y:str, hue=None):
     y_true = df[y]
     model = LinearRegression()
     model.fit(x,y_true)
+    r2_score = model.score(x, y_true)
     print(f'Coefficient of Determination (R²): {r2_score:.4f}')
     
     corr = df.corr()
