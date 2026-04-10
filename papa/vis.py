@@ -30,7 +30,7 @@ def vis_corr(df, y:str, hue=None):
     ax = ax.flatten()    
     
     for i, col in enumerate(num_feature):
-        sns.scatterplot(data=df, x=col, y=y, ax=ax[i], hue=hue, palette='Set2', legend=(i == 0))
+        sns.scatterplot(data=df, x=col, y=y, ax=ax[i], hue=hue, palette='Set2')
         ax[i].set_title(f'{col} vs {y}')
         ax[i].yaxis.set_major_formatter(mtick.FuncFormatter(num_fmt))
         
