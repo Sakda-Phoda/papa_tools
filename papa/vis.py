@@ -19,7 +19,7 @@ def  num_fmt(x, pos=None):
 
 def vis_corr(df, y:str, hue=None):
     
-    object_col = df.select_dtypes(include=['object','str']).columns
+    object_col = df.select_dtypes(include=['object']).columns
     for i in object_col:
         le = LabelEncoder()
         df[i] = le.fit_transform(df[i])
