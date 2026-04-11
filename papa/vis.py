@@ -18,7 +18,7 @@ def  num_fmt(x, pos=None):
     return f'{sign}{x:,.0f}'
 
 def vis_corr(data, y:str, hue=None):
-
+    
     df = data.copy()
     object_col = df.select_dtypes(include=['object']).columns
     for i in object_col:
@@ -34,7 +34,7 @@ def vis_corr(data, y:str, hue=None):
     
     corr = df.corr()
     corr = corr[[y]].sort_values(by=y, ascending=False)
-    plt.figure(figsize=(3,len(corr)*0.25))
+    plt.figure(figsize=(4,len(corr)*0.5))
     sns.heatmap(corr, cmap='Blues', annot=True, fmt='.2f')
     plt.title(f'Correlationt {y} vs All Features', fontsize=10)
     plt.show()
